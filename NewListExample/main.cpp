@@ -7,29 +7,26 @@ int main(int argc, char *argv[])
     QCoreApplication a(argc, argv);
 
     ModelData modelData;
+    ButtonData radioButton;
+    radioButton.name = "radio";
+    radioButton.url = "radio.png";
+            radioButton.height = 40;
+            radioButton.width = 40;
+    modelData.addEntry(radioButton);
+    modelData.addEntry(mediaButton);
+    modelData.addEntry(settingsButton);
+    modelData.addEntry(otherButton);
 
-    modelData.addElement(10);
-    modelData.addElement(20);
-    modelData.addElement(40);
-
-    if (modelData.removeElement(0) == true)
+    //if (phone Not Connected)
     {
-        cout << "test case passed";
+        modelData.addEntry(phoneButton);
     }
-    else
+    //if (No Naivagation)
     {
-        cout << "test case failed";
+        modelData.addEntry(naviButton);
     }
-    modelData.removeElement(1);
-    modelData.removeElement(9);
 
-    ScreenData newScreen;
-    newScreen.buttonName = "radio";
-    newScreen.imagePath = "../../";
-    newScreen.value = 10;
-
-    modelData.setData(newScreen);
-    modelData.getData();
-
+   // Get GridView
+    // set model property of gridview with modelData object;
     return a.exec();
 }

@@ -2,30 +2,66 @@
 #define MODELDATA_H
 
 
-#include <QString>
+#include <QAbstractListModel>
 
-
-struct ScreenData
+struct ButtonData
 {
-    QString buttonName;
-    int value;
-    QString imagePath;
+    QString name;
+    QString url;
+    int height;
+    int width;
 };
 
-class ModelData
+class ModelData : public QAbstractItemModel
 {
     public:
         ModelData();
-        void addElement(int value);
-        void removeElement(int index);
-        void moveElement(int sourceIndex, int destinationIndex);
-        void changeElement(int index, int newValue);
-        int findElement(int index);
-        int size();
 
-        void exchange(QList<int> newList);
+        virtual QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const
+        {
+           ButtonData buttonData = data.at(index);
+
+           if (role == 1)
+           {
+               return buttonData.name;
+           }
+           else if (role == 2)
+           {
+               return buttonData.url
+           }
+           else if (role == 3)
+           {
+               return buttonData.height;
+           }
+           else if (role == 4)
+           {
+               return buttonData.width;
+           }
+
+        }
+
+
+
+        void addEntry(ButtonData newButton)
+        {
+            beginInsertRows(QModelIndex(), 0, 0);
+            data.append(newButton);
+            endInsertRows();
+
+        }
+
+        virtual QHash<int,QByteArray> roleNames() const
+        {
+            QHash<int, QByteArray> roles;
+            roles[1] = "nameOfTheButton";
+            roles[2] = "urlOfTheButton";
+            roles[3] = "height";
+            roles[4] = "width";
+            return roles;
+        }
+
     private:
-        QList<int> data;
+        QList<ButtonData> data;
 };
 
 
