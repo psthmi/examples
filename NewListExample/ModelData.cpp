@@ -2,16 +2,20 @@
 
 ModelData::ModelData()
 {
-    data = 0;
+    data.buttonName = "";
+    data.imagePath = "";
+    data.value = 0;
 }
 
 
-void ModelData::setData(int value)
+void ModelData::setData(ScreenData newScreenData)
 {
-    data = value;
+    data.buttonName = newScreenData.buttonName;
+    data.imagePath = newScreenData.imagePath;
+    data.value = newScreenData.value;
 }
 
-int ModelData::getData()
+ScreenData ModelData::getData()
 {
     return data;
 }

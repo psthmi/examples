@@ -7,7 +7,12 @@ int main(int argc, char *argv[])
     QCoreApplication a(argc, argv);
 
     ModelData modelData;
-    modelData.setData(10);
+    ScreenData newScreen;
+    newScreen.buttonName = "radio";
+    newScreen.imagePath = "../../";
+    newScreen.value = 10;
+
+    modelData.setData(newScreen);
     modelData.getData();
 
     return a.exec();

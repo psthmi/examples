@@ -2,16 +2,26 @@
 #define MODELDATA_H
 
 
+#include <QString>
+
+
+struct ScreenData
+{
+    QString buttonName;
+    int value;
+    QString imagePath;
+};
+
 class ModelData
 {
     public:
         ModelData();
 
-        void setData(int value);
-        int getData();
+        void setData(ScreenData value);
+        ScreenData getData();
 
     private:
-        int data;
+        ScreenData data;
 };
 
 
