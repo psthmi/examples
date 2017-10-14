@@ -16,12 +16,16 @@ class ModelData
 {
     public:
         ModelData();
+        void addElement(int value);
+        void removeElement(int index);
+        void moveElement(int sourceIndex, int destinationIndex);
+        void changeElement(int index, int newValue);
+        int findElement(int index);
+        int size();
 
-        void setData(ScreenData value);
-        ScreenData getData();
-
+        void exchange(QList<int> newList);
     private:
-        ScreenData data;
+        QList<int> data;
 };
 
 

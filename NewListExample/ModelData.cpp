@@ -2,17 +2,27 @@
 
 ModelData::ModelData()
 {
-    data.buttonName = "";
-    data.imagePath = "";
-    data.value = 0;
+    data.clear();
 }
 
 
-void ModelData::setData(ScreenData newScreenData)
+void ModelData::addElement(int value)
 {
-    data.buttonName = newScreenData.buttonName;
-    data.imagePath = newScreenData.imagePath;
-    data.value = newScreenData.value;
+    data.append(value);
+    data.push_back(value);
+}
+
+bool ModelData::removeElement(unsigned int index)
+{
+    if ((index>=0) && (index<data.length()))
+    {
+        data.removeAt(index);
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 }
 
 ScreenData ModelData::getData()
