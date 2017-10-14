@@ -1,4 +1,5 @@
 import QtQuick 2.0
+import QtQuick.Controls 1.4
 
 Item
 {
@@ -19,5 +20,24 @@ Item
     Component.onDestruction:
     {
         console.log("First screen cleared")
+    }
+
+    Loader
+    {
+        id: loader
+    }
+
+    Button
+    {
+        x: 400
+        y: 400
+        text: "SecondScreen"
+
+        onClicked:
+        {
+            console.log("Component onCompleted")
+            rootWindow.changeScreen("SecondScreen.qml")
+            //loader.setSource("SecondScreen.qml")
+        }
     }
 }

@@ -5,6 +5,7 @@ import QtQuick.Controls 1.4
 
 Window
 {
+    id: rootWindow
     visible: true
     width: 640
     height: 480
@@ -22,22 +23,13 @@ Window
     Component.onCompleted:
     {
         console.log("Component onCompleted")
-        loader.setSource("FirstScreen.qml");
+        loader.setSource("FirstScreen.qml")
     }
 
-    Button
+    function changeScreen(value)
     {
-        x: 400
-        y: 400
-        text: "ChangeScreen"
-
-        onClicked:
-        {
-            console.log("Component onCompleted")
-            loader.setSource("SecondScreen.qml")
-        }
-
-
+        console.log(value)
+        loader.setSource(value)
     }
 
 }
