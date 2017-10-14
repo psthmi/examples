@@ -4,8 +4,15 @@
 
 class ModelData
 {
-public:
-    ModelData();
+    public:
+        ModelData();
+
+        void setData(int value);
+        int getData();
+
+    private:
+        int data;
 };
+
 
 #endif // MODELDATA_H
